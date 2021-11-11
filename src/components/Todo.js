@@ -14,16 +14,37 @@ const ButtonStyled = styled(Button)
 `
     margin-top: 10px;
     text-align: left;
-    .textedit {
-        width: calc(100% - 150px);
-        position: absolute;
-    }
+    // background-color: #f00;
+    padding: 5px;
+
     .list-task {
         width: 100%;
         border: none;
         border-bottom: 1px dashed;
         border-radius: 0;
         float: left;
+    }
+    .category {
+        .list-task {
+            input {
+                font-size: 28px;
+                font-family: "Playfair Display",Georgia,Cambria,Times New Roman,Times,serif;
+                font-weight: bold;
+                height: 36px;
+            }
+        }
+    }
+    .textedit {
+        width: calc(100% - 120px);
+        position: absolute;
+    }
+    .textedit.category {
+        width: calc(100% - 66px);
+    }
+    .textview.category {
+        font-size: 28px;
+        font-family: "Playfair Display",Georgia,Cambria,Times New Roman,Times,serif;
+        font-weight: bold; 
     }
     ${p => p.isEdited && css`
         .textedit {
@@ -67,7 +88,7 @@ const ButtonStyled = styled(Button)
         }
     }
     .after-icon {
-        .close-icon {
+        .remove-icon {
             // display: none;
             opacity: 0;
             transition: 0.3s;
@@ -107,7 +128,7 @@ const ButtonStyled = styled(Button)
         white-space: nowrap;
         background: var(--ds-background-subtleNeutral-resting,rgba(9,30,66,0.04));
         color: var(--ds-text-highEmphasis,#42526E) !important;
-        .close-icon {
+        .remove-icon {
             // display: inline-block;
             opacity: 1;
         }
@@ -122,7 +143,8 @@ const ButtonStyled = styled(Button)
         `}
     }
 `;
-export default function Todo({ todo, onCheckBtnClick, onInputComlpeted, onTaskChange, onInputStartEditor}) {
+
+export default function Todo({ todo, onCheckBtnClick, onInputComlpeted, onTaskChange, onInputStartEditor, onRemoveBtnClick}) {
     // const [editValue, setEditValue] = useState('');
     return (
         <>
@@ -130,19 +152,17 @@ export default function Todo({ todo, onCheckBtnClick, onInputComlpeted, onTaskCh
                 isCompleted={todo.isCompleted}
                 isEdited={todo.isEdited}
                 iconBefore={
-                    // !todo.isCompleted ? (
-                    //     <span className='check-icon' onClick={() => onCheckBtnClick(todo.id)}>
-                    //         <CheckIcon primaryColor='#EA5454' />
-                    //     </span>    
-                    // ) : (
-                        <span className='check-icon' onClick={() => onCheckBtnClick(todo.id)}>
-                            <CheckIcon />
-                        </span>    
-                    // )
+                        todo.isTypeTtem && (
+                            <span className='check-icon' onClick={() => onCheckBtnClick(todo.id)}>
+                                <CheckIcon />
+                            </span>     
+                        )
+                        
+                    
                 }
                 iconAfter={
                     <div className='after-icon'>
-                        <span className='close-icon'>
+                        <span className='remove-icon' onClick={() => onRemoveBtnClick(todo.id)}>
                             <EditorCloseIcon primaryColor='#00324A' />
                         </span>
                         <span className='move-icon'>
@@ -151,21 +171,42 @@ export default function Todo({ todo, onCheckBtnClick, onInputComlpeted, onTaskCh
                     </div>
                 }
             >
-                <div className='textedit'>
+                <div
+                className={
+                    !todo.isTypeTtem ? (
+                        'textedit category'
+                    ) :
+                    (
+                       'textedit'
+                    )
+                }
+                >
                     <Textfield placeholder = "neue Aufgabe..."
                     className='list-task'
                     css = { { padding: '5px 10px' } }
                     value = { todo.name }
                     onChange = {(e) => onTaskChange(todo.id, e.target.value)}
+                    // elemBeforeInput = {todo.name}
                     >
                     </Textfield>
                     <span className='done-icon' onClick={(e) => onInputComlpeted(todo.id)}>
-                        <EditorDoneIcon primaryColor='#fff' />
+                        <EditorDoneIcon primaryColor='#fff' />{todo.type }
                     </span>
                 </div>
-                <span className='textview' onClick={(e) => onInputStartEditor(todo.id)}>
+                
+                <span 
+                className={
+                    !todo.isTypeTtem ? (
+                        'textview category'
+                    ) :
+                     (
+                        'textview'
+                    )
+                }
+                onClick={(e) => onInputStartEditor(todo.id)}>
                     { todo.name }
                 </span>
+                
             </ButtonStyled>
                 
             
