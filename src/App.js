@@ -18,7 +18,51 @@ const TODO_APP_STORAGE_KEY = 'TODO_APP';
 const App = () => {
   const [todoList, setTodoList] = useState([]);
   var storagedTodoList = localStorage.getItem(TODO_APP_STORAGE_KEY);
-  var list2 = JSON.parse(storagedTodoList);
+  // var list2 = JSON.parse(storagedTodoList);
+  var list2 = [
+    {
+        "id": "c56a038f-91bc-4ecf-98b0-17c6a26de9bd",
+        "isTypeTtem": false,
+        "name": "Agape",
+        "isCompleted": false,
+        "isEdited": true
+    },
+    {
+        "id": "ca377308-82d0-4e44-bccb-19c555db45c4",
+        "isTypeTtem": true,
+        "name": "Wein",
+        "isCompleted": false,
+        "isEdited": true
+    },
+    {
+        "id": "9a5a7f0b-a2ee-45c8-9c84-70f435ac1a82",
+        "isTypeTtem": true,
+        "name": "Speisen",
+        "isCompleted": false,
+        "isEdited": true
+    },
+    {
+        "id": "96d74b58-af88-4f08-af45-601b927e448d",
+        "isTypeTtem": true,
+        "name": "Kellner oder Freunde die ausschenken",
+        "isCompleted": false,
+        "isEdited": true
+    },
+    {
+        "id": "21db0133-1e37-4180-91a4-56815f4887f9",
+        "isTypeTtem": true,
+        "name": "eventuell Luftballone",
+        "isCompleted": false,
+        "isEdited": true
+    },
+    {
+        "id": "985fc6b5-8294-453a-9a9d-2c6b3b93499c",
+        "isTypeTtem": true,
+        "name": "Seifenblasen oder ähnliches für den Auszug aus der Kirche",
+        "isCompleted": false,
+        "isEdited": true
+    }
+]
   console.log(list2);
 
   
