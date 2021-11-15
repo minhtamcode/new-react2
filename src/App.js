@@ -163,6 +163,15 @@ const App = () => {
               opacity: 0;
           }
       }
+      .css-19r5em7 {
+        // background-color: #f00;
+        display: flex;
+        .sc-gsDKAQ {
+          position: absolute;
+          right: -2px;
+          z-index: 1;
+        }
+      }
       .css-7no60z-ButtonBase {
         // background-color: #f00;
         display: flex;
