@@ -157,8 +157,6 @@ export default function Todo({ todo, onCheckBtnClick, onInputComlpeted, onTaskCh
                                 <CheckIcon />
                             </span>     
                         )
-                        
-                    
                 }
                 iconAfter={
                     <div className='after-icon'>
