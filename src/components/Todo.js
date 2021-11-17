@@ -7,6 +7,7 @@ import BitbucketSourceIcon from '@atlaskit/icon/glyph/bitbucket/source';
 import EditorExpandIcon from '@atlaskit/icon/glyph/editor/expand';
 import EditorCloseIcon from '@atlaskit/icon/glyph/editor/close';
 import Textfield from '@atlaskit/textfield';
+import { Draggable } from 'react-beautiful-dnd';
 // import InlineEdit from '@atlaskit/inline-edit';
 // import useState from 'react';
 
@@ -164,7 +165,7 @@ export default function Todo({ todo, onCheckBtnClick, onInputComlpeted, onTaskCh
                             <EditorCloseIcon primaryColor='#00324A' />
                         </span>
                         <span className='move-icon'>
-                            <EditorExpandIcon primaryColor='#00324AC7' />
+                            <Draggable/>
                         </span>
                     </div>
                 }
