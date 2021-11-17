@@ -165,7 +165,7 @@ export default function Todo({ todo, onCheckBtnClick, onInputComlpeted, onTaskCh
                             <EditorCloseIcon primaryColor='#00324A' />
                         </span>
                         <span className='move-icon'>
-                            <Draggable/>
+                            <Draggable />
                         </span>
                     </div>
                 }
